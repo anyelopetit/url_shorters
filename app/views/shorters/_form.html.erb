@@ -1,0 +1,32 @@
+<%= form_with(model: shorter, local: true) do |form| %>
+  <% if shorter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shorter.errors.count, "error") %> prohibited this shorter from being saved:</h2>
+
+      <ul>
+      <% shorter.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :original_url %>
+    <%= form.text_field :original_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shorted_url %>
+    <%= form.text_field :shorted_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expire_time %>
+    <%= form.datetime_select :expire_time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

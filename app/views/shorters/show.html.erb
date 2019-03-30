@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Original url:</strong>
+  <%= @shorter.original_url %>
+</p>
+
+<p>
+  <strong>Shorted url:</strong>
+  <%= @shorter.shorted_url %>
+</p>
+
+<p>
+  <strong>Expire time:</strong>
+  <%= @shorter.expire_time %>
+</p>
+
+<p>
+  <strong>Redirect counter:</strong>
+  <%= @shorter.redirect_counter %>
+</p>
+
+<%= link_to 'Edit', edit_shorter_path(@shorter) %> |
+<%= link_to 'Back', shorters_path %>

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shorters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Original url</th>
+      <th>Shorted url</th>
+      <th>Expire time</th>
+      <th>Redirect counter</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shorters.each do |shorter| %>
+      <tr>
+        <td><%= shorter.original_url %></td>
+        <td>
+          <% if shorter.expired? %>
+            Enlace caducado
+          <% else %>
+            <%= link_to shorter_counter_path(shorter), method: :post do %>
+              <%= shorter.shorted_url %>
+            <% end %>
+          <% end %>
+        </td>
+        <td><%= shorter.expire_time.strftime('%d/%m/%y %H:%M') %></td>
+        <td><%= shorter.redirect_counter %></td>
+        <td><%= link_to 'Show', shorter %></td>
+        <td><%= link_to 'Edit', edit_shorter_path(shorter) %></td>
+        <td><%= link_to 'Destroy', shorter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Shorter', new_shorter_path %>
